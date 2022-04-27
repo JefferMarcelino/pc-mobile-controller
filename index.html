@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desligar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        main button {
+            padding: 50px;
+            border-radius: 10px;
+            border: none;
+            background-color: red;
+            color: white;
+            font-size: 2.8rem;
+            transition: transform 0.2s;
+        }
+
+        main button:hover {
+            filter: brightness(80%);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <button>Turn OFF</button>
+    </main>
+
+    <script>
+        var button = document.querySelector("main button")
+        button.addEventListener("click", () => {
+            fetch("http://localhost:3001/list-folders")
+            .then(data => {
+                return data.json()
+            })
+            .then(response => {
+                console.log(response)
+            })
+        })
+    </script>
+</body>
+</html>

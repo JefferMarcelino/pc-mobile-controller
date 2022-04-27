@@ -1,0 +1,25 @@
+{
+  "name": "pc-mobile-controller",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JefferMarcelino/pc-mobile-controller.git"
+  },
+  "author": "Jeffer Marcelino",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JefferMarcelino/pc-mobile-controller/issues"
+  },
+  "homepage": "https://github.com/JefferMarcelino/pc-mobile-controller#readme",
+  "dependencies": {
+    "express": "^4.18.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
