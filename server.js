@@ -1,21 +1,20 @@
-const express = require('express')
-const { spawn } = require('child_process');
-const app = express()
-const port = 3001
+const express = require('express');
+const app = express();
+const http = require('http');
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
 
-app.get('/create-folder', (req, res) => {
-    var process = spawn('python3', ['./python/create-folder.py']);
-    console.log("Folder created")
-})
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
 
-app.get('/list-folders', (req, res) => {
-    var process = spawn('python3', ['./python/list-folders.py']);
-    process.stdout.on('data', function(data) {
-        var data = data.toString()
-        //res.send(`<p>${data.toString()}</p>`)
-        res.send(data.replace(/-/g, "<br>"));
-    } )
-})
+io.on('connection', (socket) => {
+    socket.on('chat message', (msg) => {
+      io.emit('chat message', msg);
+    });
+});
 
-app.listen(port, () => console.log(`Example app listening on port 
-${port}!`))
+server.listen(3000, () => {
+  console.log('listening on 3000');
+});
